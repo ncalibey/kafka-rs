@@ -8,7 +8,7 @@ use tracing_subscriber::prelude::*;
 async fn main() -> Result<()> {
     tracing_subscriber::registry()
         // Filter spans based on the RUST_LOG env var.
-        .with(tracing_subscriber::EnvFilter::new("error,simple_producer=debug,kafka_rs=debug"))
+        .with(tracing_subscriber::EnvFilter::new("error,create_topic=debug,kafka_rs=debug"))
         .with(
             tracing_subscriber::fmt::layer()
                 .with_target(false) // Too verbose, so disable target.
@@ -37,7 +37,6 @@ async fn main() -> Result<()> {
     imap.insert(TopicName(topic), ct);
     ctrb.topics(imap);
     let req = ctrb.build().unwrap();
-    println!("{}", req.topics.len());
 
     admin.create_topics(req).await.context("error creating topic")?;
     Ok(())

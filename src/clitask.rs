@@ -276,7 +276,7 @@ pub enum MetadataPolicy {
         /// query it aggressively for metadata updates.
         interval: Duration,
     },
-    /// The cilent will neither bootstrap its initial metadata, nor will it poll the cluster for metadata updates.
+    /// The client will neither bootstrap its initial metadata, nor will it poll the cluster for metadata updates.
     ///
     /// All metadata updates will take place through the client's `update_metadata` method, which is gated behind
     /// the `internal` feature flag.

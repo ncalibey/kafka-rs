@@ -9,7 +9,7 @@ use tracing_subscriber::prelude::*;
 async fn main() -> Result<()> {
     tracing_subscriber::registry()
         // Filter spans based on the RUST_LOG env var.
-        .with(tracing_subscriber::EnvFilter::new("error,simple_producer=debug,kafka_rs=debug"))
+        .with(tracing_subscriber::EnvFilter::new("error,delete_topic=debug,kafka_rs=debug"))
         .with(
             tracing_subscriber::fmt::layer()
                 .with_target(false) // Too verbose, so disable target.
